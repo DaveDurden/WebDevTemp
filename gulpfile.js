@@ -17,19 +17,28 @@ var jshint          = require('gulp-jshint'),
 var concat          = require('gulp-concat'),
     rename          = require('gulp-rename'),
     cache           = require('gulp-cache'),
-    del             = require('del');
+    del             = require('del'),
+    fileinclude     = require('gulp-file-include');
 
 // include other plugins
 var notify          = require('gulp-notify'),
     browserSync     = require('browser-sync').create(),
     runSequence     = require('run-sequence'),
-    imagemin        = require('gulp-imagemin');
+    imagemin        = require('gulp-imagemin')
+    markdown        = require('markdown');
 
 
 // copy markup & text files to dist folder
 gulp.task('html', function(){
     del(['dist/*.+(html|php|txt)']);
     return gulp.src('src/*.+(html|php|txt)')
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: 'src/partials',
+            filters: {
+                markdown: markdown.parse
+            }
+        }))
         .pipe(cache(gulp.dest('dist')))
         ;
 });
