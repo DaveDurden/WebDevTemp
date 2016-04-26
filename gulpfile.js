@@ -72,7 +72,7 @@ gulp.task('styles', function() {
 });
 
 
-// optimize static images
+// copy & optimize images
 gulp.task('images', function() {
     return gulp.src('src/img/**/*.+(png|jpg|gif|svg)')
         .pipe(cache(imagemin({
@@ -93,7 +93,7 @@ gulp.task('fonts', function() {
 });
 
 
-// lint scripts
+// lint own scripts
 gulp.task('lint', function() {
     return gulp.src(['src/js/**/*.js', '!src/js/vendor/**/*.js'])
         .pipe(jshint())
@@ -110,7 +110,7 @@ gulp.task('vendor-scripts', function() {
 });
 
 
-// concatenate & minify javascripts
+// concatenate & uglify javascripts
 gulp.task('scripts', ['lint', 'vendor-scripts'], function() {
     return gulp.src(['src/js/**/*.js', '!src/js/vendor/**/*.js'])
         .pipe(sourcemaps.init())
@@ -149,11 +149,11 @@ gulp.task('serve', ['watch'], function() {
 });
 
 
-// default task (called with 'gulp')
+// default task (called with 'gulp') will call 'serve', which also calls 'watch'
 gulp.task('default', ['serve']);
 
 
-// clean dist folder
+// clean dist folder and all caches
 gulp.task('clean', function() {
     cache.clearAll();
     return del(['dist']);
