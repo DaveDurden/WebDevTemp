@@ -126,7 +126,7 @@ gulp.task('scripts', ['lint', 'vendor-scripts'], function() {
 
 // run tasks when a file changes
 gulp.task('watch', function() {
-    gulp.watch('src/*.html', ['html']);
+    gulp.watch('src/**/*.html', ['html']);
     gulp.watch('src/sass/**/*.scss', ['styles']);
     gulp.watch(['src/js/**/*.js', '!src/js/vendor/**/*.js'], ['scripts']);
     gulp.watch('src/img/**/*', ['images']);
