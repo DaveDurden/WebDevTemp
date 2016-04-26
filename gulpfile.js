@@ -24,13 +24,12 @@ var concat          = require('gulp-concat'),
 var notify          = require('gulp-notify'),
     browserSync     = require('browser-sync').create(),
     runSequence     = require('run-sequence'),
-    imagemin        = require('gulp-imagemin')
+    imagemin        = require('gulp-imagemin'),
     markdown        = require('markdown');
 
 
 // copy markup & text files to dist folder
 gulp.task('html', function(){
-    del(['dist/*.+(html|php|txt)']);
     return gulp.src('src/*.+(html|php|txt)')
         .pipe(fileinclude({
             prefix: '@@',
@@ -75,7 +74,6 @@ gulp.task('styles', function() {
 
 // optimize static images
 gulp.task('images', function() {
-    del(['dist/img']);
     return gulp.src('src/img/**/*.+(png|jpg|gif|svg)')
         .pipe(cache(imagemin({
             optimizationLevel: 3,
@@ -89,7 +87,6 @@ gulp.task('images', function() {
 
 // copy font files
 gulp.task('fonts', function() {
-    del(['dist/fonts']);
     return gulp.src('src/fonts/**/*')
         .pipe(cache(gulp.dest('dist/fonts')))
         ;
