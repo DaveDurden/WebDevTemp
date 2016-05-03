@@ -1,7 +1,13 @@
 /**
 * Basic typography style for copy text
 */
+html {
+    font-size: 62.5%; // for rem use
+}
+
 body {
     color: $text-color;
-    font: normal 125% / 1.4 $text-font-stack;
+    font-family: $text-font-stack;
+    font-size: 1.6rem;
+    line-height: 1.4;
 }
