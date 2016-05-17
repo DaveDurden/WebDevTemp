@@ -43,6 +43,14 @@ gulp.task('html', function(){
 });
 
 
+// copy downloadable files dist folder
+gulp.task('downloads', function(){
+    return gulp.src('src/downloads/**/*')
+        .pipe(cache(gulp.dest('dist/downloads')))
+        ;
+});
+
+
 // concatenate, compile, prefix & minify styles
 gulp.task('styles', function() {
     return gulp.src('src/sass/main.scss')
@@ -162,5 +170,5 @@ gulp.task('clean', function() {
 
 // rebuild task for full site regeneration
 gulp.task('rebuild', function() {
-    runSequence('clean', ['html', 'styles', 'images', 'fonts', 'scripts']);
+    runSequence('clean', ['html', 'downloads', 'styles', 'images', 'fonts', 'scripts']);
 });
