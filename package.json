@@ -24,7 +24,7 @@
     "gulp-pixrem": "^1.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.1",
-    "gulp-sass-glob": "^1.0.6",
+    "gulp-sass-glob-import": "^0.1.0",
     "gulp-sourcemaps": "^2.0.0-alpha",
     "gulp-uglify": "^1.5.3",
     "jshint": "^2.9.2",

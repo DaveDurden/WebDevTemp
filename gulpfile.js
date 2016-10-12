@@ -3,7 +3,7 @@ var gulp            = require('gulp');
 
 // include SASS & CSS plugins
 var sass            = require('gulp-sass'),
-    sassGlob        = require('gulp-sass-glob'),
+    sassGlob        = require('gulp-sass-glob-import'),
     cssnano         = require('gulp-cssnano'),
     pixrem          = require('gulp-pixrem'),
     autoprefixer    = require('gulp-autoprefixer');
