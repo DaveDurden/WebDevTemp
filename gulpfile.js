@@ -66,7 +66,7 @@ gulp.task('styles', function() {
             sound: true,
             wait: true
         }))
-        .pipe(autoprefixer('> 1% in DE'))
+        .pipe(autoprefixer({ browsers: ['> 1% in DE'], remove: false }))
         .pipe(pixrem({
             rootValue: '16px',
             atrules: true,
