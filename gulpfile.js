@@ -148,7 +148,8 @@ gulp.task('serve', ['watch'], function() {
         server: {
             baseDir: 'dist/',
         },
-        browser: 'google chrome',
+        // browser: 'google chrome',
+        open: true,
         files: ['dist/**/*'],
         notify: false,
         reloadDelay: 500
