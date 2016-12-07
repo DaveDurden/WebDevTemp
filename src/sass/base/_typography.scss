@@ -11,3 +11,8 @@ body {
     font-size: 1.6rem;
     line-height: 1.4;
 }
+
+::selection {
+    background: $brand-color;
+    text-shadow: none;
+}
