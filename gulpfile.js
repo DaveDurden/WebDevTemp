@@ -30,7 +30,7 @@ var notify          = require('gulp-notify'),
 
 // copy markup & text files to dist folder
 gulp.task('html', function(){
-    return gulp.src('src/*.+(html|php|txt)')
+    return gulp.src('src/*.+(html|php|txt|xml)')
         .pipe(fileinclude({
             prefix: '@@',
             basepath: 'src/partials',
@@ -148,7 +148,6 @@ gulp.task('serve', ['watch'], function() {
         server: {
             baseDir: 'dist/',
         },
-        // browser: 'google chrome',
         open: true,
         files: ['dist/**/*'],
         notify: false,
