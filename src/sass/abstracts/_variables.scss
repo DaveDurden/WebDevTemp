@@ -57,10 +57,11 @@ $max-width: 1180px !default;
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
 /// @see {mixin} respond-to
 $breakpoints: (
-    'small': (min-width: 480px),
-    'medium': (min-width: 550px),
-    'large': (min-width: 740px),
-    'maximum': (min-width: 1024px)
+    'phablet': (min-width: 480px),
+    'tablet-portrait': (min-width: 550px),
+    'tablet-landscape': (min-width: 740px),
+    'notebook': (min-width: 950px),
+    'desktop': (min-width: 1100px)
 ) !default;
 
 
