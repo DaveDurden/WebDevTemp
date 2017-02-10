@@ -22,7 +22,8 @@ var concat          = require('gulp-concat'),
 
 // include other plugins
 var notify          = require('gulp-notify'),
-    browserSync     = require('browser-sync').create(),
+    browserSync     = require('browser-sync'),
+    php             = require('gulp-connect-php'),
     runSequence     = require('run-sequence'),
     imagemin        = require('gulp-imagemin'),
     markdown        = require('markdown');
@@ -144,7 +145,8 @@ gulp.task('watch', function() {
 
 // start browsersync server
 gulp.task('serve', ['watch'], function() {
-    browserSync.init({
+    var browserSyncInstance = browserSync.create();
+    browserSyncInstance.init({
         server: {
             baseDir: 'dist/',
         },
@@ -157,8 +159,29 @@ gulp.task('serve', ['watch'], function() {
 });
 
 
+// alternative: start browsersync server with php
+gulp.task('serve-php', ['watch'], function() {
+    php.server({
+        base: 'dist/',
+        port: 8000,
+        keepalive: true,
+        // open: true
+    }, function() {
+        browserSync({
+            proxy: '127.0.0.1:8000',
+            open: true,
+            files: ['dist/**/*'],
+            notify: false,
+            reloadDelay: 500
+        });
+    });
+});
+
+
+
 // default task (called with 'gulp') will call 'serve', which also calls 'watch'
 gulp.task('default', ['serve']);
+// gulp.task('default', ['serve-php']);
 
 
 // clean dist folder and all caches
